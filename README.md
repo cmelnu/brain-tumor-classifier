@@ -1,2 +1,23 @@
-# brain-tumor-classifier
-An ML model that classifies pictures of tumors by type
+# Project Title
+
+## Description
+
+## Installation
+
+## Usage
+
+## Dataset
+
+## Model Architecture
+
+## Training
+
+## Evaluation
+
+## Results
+
+## Contributing
+
+## License
+
+## Acknowledgments
