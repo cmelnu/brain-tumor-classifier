@@ -10,6 +10,13 @@ This project aims to classify brain tumors from medical images using a convoluti
 
 ---
 
+## 💻 System Compatibility
+
+This project is compatible with:
+* **Linux** (Ubuntu 20.04+)
+
+---
+
 ## ⚙️ Requirements
 
 Before proceeding, ensure you have **Conda** installed on your system. You can install it via:
