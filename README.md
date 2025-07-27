@@ -39,7 +39,7 @@ conda activate brain-tumor-classifier
 We'll install essential libraries with compatible versions for smooth operation.
 
 ```bash
-conda install -c conda-forge numpy=1.26 matplotlib=3.8.4 pillow=9.5.0 scikit-learn=1.3.0 -y
+conda install -c conda-forge numpy=1.26 matplotlib=3.8.4 pillow=9.5.0 scikit-learn=1.3.0 scikit-image -y
 ```
 
 ### 3. 📊 Set up Jupyter & ipykernel
