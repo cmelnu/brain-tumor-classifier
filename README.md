@@ -14,9 +14,11 @@ This project aims to classify brain tumors from medical images using a convoluti
 
 This project is compatible with:
 * **Linux** (Ubuntu 20.04+)
+
 * **Windows 10+**
 
 Thanks to Conda, the environment is fully reproducible and automatically adapted to each system. The same setup instructions work on both platforms.
+
 ---
 
 ## ⚙️ Requirements
@@ -32,7 +34,11 @@ Before proceeding, ensure you have **Conda** installed on your system. You can i
 
 ## 🚀 Installation Guide: Brain Tumor Classifier
 
+
 Let’s get your Brain Tumor Classifier up and running on **Windows or Linux**! Follow these steps:
+=======
+Let's get your Brain Tumor Classifier up and running! Follow these simple steps:
+
 
 ### 1. 🌐 Create a New Environment (Recommended)
 
@@ -48,6 +54,7 @@ conda activate brain-tumor-classifier
 We'll install essential libraries with compatible versions for smooth operation.
 
 ```bash
+
 conda install -c pytorch -c conda-forge pytorch torchvision torchaudio cpuonly
 numpy=1.26 matplotlib=3.8.4 pillow=9.5.0 scikit-learn=1.3.0 scikit-image -y
 
