@@ -24,12 +24,14 @@ test_dir = base_path / "Testing"
 # ----------------------------------------
 # Step 2: Define image transformations
 # ----------------------------------------
+
 transform = transforms.Compose([
-    transforms.Lambda(lambda img: img.convert("RGB")),  # Ensure RGB
+    transforms.Lambda(lambda img: img.convert("L")),    # Convert to grayscale
     transforms.Resize((224, 224)),                      # Resize
-    transforms.ToTensor(),                              # To tensor
-    transforms.Normalize(mean=[0.5]*3, std=[0.5]*3)      # Normalize to [-1, 1]
+    transforms.ToTensor(),                              # Convert to tensor (shape: [1, 224, 224])
+    transforms.Normalize(mean=[0.5], std=[0.5])          # Normalize grayscale image
 ])
+
 
 # ----------------------------------------
 # Step 3: Load datasets
