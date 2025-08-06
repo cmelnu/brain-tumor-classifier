@@ -54,10 +54,8 @@ conda activate brain-tumor-classifier
 We'll install essential libraries with compatible versions for smooth operation.
 
 ```bash
-
 conda install -c pytorch -c conda-forge pytorch torchvision torchaudio cpuonly
-numpy=1.26 matplotlib=3.8.4 pillow=9.5.0 scikit-learn=1.3.0 scikit-image -y
-
+matplotlib=3.8.4 pillow=9.5.0 -y
 ```
 
 ### 3. 📊 Set up Jupyter & ipykernel
@@ -68,23 +66,7 @@ Get ready for interactive coding and analysis!
 conda install -c conda-forge jupyterlab notebook ipykernel -y
 ```
 
- ### 4. 🧠 Install TensorFlow (CPU Version)
-
-Bring on the machine learning power! This version is compatible with numpy 1.26.
-
-```bash
-conda install -c conda-forge tensorflow=2.12 -y
-```
-
-### 5. 📸 Install OpenCV
-
-For all your computer vision needs!
-
-```bash
-conda install -c conda-forge opencv=4.6.0 -y
-```
-
-### 6. 🧑‍💻 Install KaggleHub
+### 4. 🧑‍💻 Install KaggleHub
 
 ```bash
 pip install kagglehub
@@ -92,7 +74,7 @@ pip install kagglehub
 
 ---
 
-### 7. 🚀 Opening Your Project in Jupyter Notebook
+### 5. 🚀 Opening Your Project in Jupyter Notebook
 
 Once you've followed the installation steps and activated your environment, opening your project is simple!
 
