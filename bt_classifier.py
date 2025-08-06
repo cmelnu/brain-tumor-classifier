@@ -1,4 +1,4 @@
-# ================================
+# # ================================
 # bt_classifier.py
 # Preprocessing and EDA pipeline
 # ================================
@@ -22,16 +22,14 @@ train_dir = base_path / "Training"
 test_dir = base_path / "Testing"
 
 # ----------------------------------------
-# Step 2: Define image transformations
+# Step 2: Define image transformations (Grayscale)
 # ----------------------------------------
-
 transform = transforms.Compose([
     transforms.Lambda(lambda img: img.convert("L")),    # Convert to grayscale
     transforms.Resize((224, 224)),                      # Resize
-    transforms.ToTensor(),                              # Convert to tensor (shape: [1, 224, 224])
-    transforms.Normalize(mean=[0.5], std=[0.5])          # Normalize grayscale image
+    transforms.ToTensor(),                              # Convert to tensor [1, 224, 224]
+    transforms.Normalize(mean=[0.5], std=[0.5])          # Normalize grayscale
 ])
-
 
 # ----------------------------------------
 # Step 3: Load datasets
@@ -66,10 +64,10 @@ plt.show()
 # Step 7: Display one image per class
 # ----------------------------------------
 
-# Reverse normalization for visualization
+# Reverse normalization for grayscale visualization
 inv_normalize = transforms.Normalize(
-    mean=[-1.0, -1.0, -1.0],
-    std=[2.0, 2.0, 2.0]
+    mean=[-1.0],
+    std=[2.0]
 )
 
 class_images = {}
@@ -80,14 +78,14 @@ for img, label in train_dataset:
     if len(class_images) == len(train_dataset.classes):
         break
 
-# Show normalized and de-normalized images
+# Show normalized and de-normalized images (grayscale)
 n_classes = len(class_images)
 plt.figure(figsize=(n_classes * 2.5, 5))
 
 for idx, (class_name, img) in enumerate(class_images.items()):
     # Normalized image
     plt.subplot(2, n_classes, idx + 1)
-    plt.imshow(img.permute(1, 2, 0).numpy())
+    plt.imshow(img.squeeze(0).numpy(), cmap='gray')  # [1, 224, 224] → [224, 224]
     plt.title(f"{class_name}\n(normalized)")
     plt.axis('off')
 
@@ -95,7 +93,7 @@ for idx, (class_name, img) in enumerate(class_images.items()):
     img_inv = inv_normalize(img)
     img_inv = torch.clamp(img_inv, 0, 1)
     plt.subplot(2, n_classes, n_classes + idx + 1)
-    plt.imshow(img_inv.permute(1, 2, 0).numpy())
+    plt.imshow(img_inv.squeeze(0).numpy(), cmap='gray')
     plt.title(f"{class_name}\n(original)")
     plt.axis('off')
 
