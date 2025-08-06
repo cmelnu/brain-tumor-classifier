@@ -1,6 +1,6 @@
 # 🧠 Brain Tumor Classifier
 
-A deep learning project for classifying brain tumor images using TensorFlow and OpenCV. This project includes data preprocessing, model training, evaluation, and visualization.
+A deep learning project for classifying brain tumor images using PyTorch. This project includes data preprocessing, model training, evaluation, and visualization.
 
 ---
 
