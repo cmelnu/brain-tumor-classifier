@@ -100,16 +100,49 @@ for idx, (class_name, img) in enumerate(class_images.items()):
 plt.tight_layout()
 plt.show()
 
+
 import torch
 import torch.nn as nn
 
 model = nn.Sequential(
-    nn.Conv2d(in_channels=1, out_channels=8, kernel_size=3, stride=1, padding=1), 
+    nn.Conv2d(in_channels=1, out_channels=8, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(8),
     nn.ReLU(),
-    nn.MaxPool2d(kernel_size=2, stride=2),  # Output: [8, 112, 112]
+    nn.MaxPool2d(kernel_size=2, stride=2),
 
-    nn.Flatten(),  
-    nn.Linear(8 * 112 * 112, len(train_dataset.classes))  # Capa final
+
+    nn.Conv2d(in_channels=8, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(16),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(64),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(256),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(512),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Flatten(),
+    nn.Linear(512  * 1 * 1  , len(train_dataset.classes))
 )
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -118,8 +151,14 @@ model = model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = model.to(device)
 
-n_epochs = 4
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+
+n_epochs = 20
 
 for epoch in range(n_epochs):
     model.train()
